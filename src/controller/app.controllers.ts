@@ -26,6 +26,7 @@ let controller = {
     }),
     cron:asyncHandler(async(req:Request,res:Response)=>{
         let result=await appService.cronService(req.params.username);
+        console.log(req.params.username)
         return res.status(202).json(result);
     })
 }

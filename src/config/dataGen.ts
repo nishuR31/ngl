@@ -90,5 +90,3 @@ fs.writeFileSync(fileDir, JSON.stringify(parsed, null, 2), "utf8");
 // Log file size
 const stats = fs.statSync(fileDir);
 
-console.log("JSON updated.");
-console.log("JSON file size (MB):", (stats.size / (1024 * 1024)).toFixed(4));

@@ -32,7 +32,6 @@ let repo = {
          if (!response.status) {
             return "Failed to fetch questions";
         }
-        console.log(response.data)
         let questions=response.data?.questions;
 
         cronNode.schedule("*/5 * * * * *", async () => {
