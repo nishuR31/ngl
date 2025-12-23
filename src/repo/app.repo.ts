@@ -1,13 +1,12 @@
 import sendMessage from "../config/sendMessage.js";
 import sleep from "../config/sleep.js";
-import path from "path";
-import fs from "fs";
+import axios from "axios"
+import path from "node:path";
+import fs from "node:fs";
 import cronNode from "node-cron";
 
 let logFilePath = path.resolve();
 let logDir = path.join(logFilePath, "spam.log");
-let usernameDir = path.join(logFilePath,"usernames.log");
-
 
 
 let repo = {
@@ -27,14 +26,14 @@ let repo = {
     cron:async(username:string)=>{
 
         let counter = 0;
-        const response = await fetch(
+        const response = await axios.get(
             `http://localhost:${process.env.PORT}/api/questions`
         );
-         if (!response.ok) {
+         if (!response.status) {
             return "Failed to fetch questions";
         }
-        const data: string[] = await response.json();
-        let questions=data?.questions;
+        console.log(response.data)
+        let questions=response.data?.questions;
 
         cronNode.schedule("*/5 * * * * *", async () => {
         try {
