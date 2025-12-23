@@ -16,9 +16,9 @@
   "type": "module",
   "dependencies": {
     "axios": "^1.13.2",
-    "crypto": "^1.0.1",
     "envf": "^3.1.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "node-cron": "^4.2.1"
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",

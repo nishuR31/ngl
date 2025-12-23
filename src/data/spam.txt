@@ -1,5 +1,0 @@
-[22/12/2025, 11:32:40 pm] Sent question: "What is your favorite hobby?" to username: "nishu29539"
-[22/12/2025, 11:32:41 pm] Sent question: "If you could travel anywhere in the world, where would you go?" to username: "nishu29539"
-[22/12/2025, 11:32:42 pm] Sent question: "What is one thing you can't live without?" to username: "nishu29539"
-[22/12/2025, 11:32:42 pm] Sent question: "What's a fun fact about yourself that most people don't know?" to username: "nishu29539"
-[22/12/2025, 11:32:43 pm] Sent question: "If you could have any superpower, what would it be and why?" to username: "nishu29539"
