@@ -73,14 +73,14 @@ function entropyNoise(bytes = 32): string {
 function buildPayload(blocks: number = 2000): string {
   let text: string = "";
   for (let i = 0; i < blocks; i++) {
-    text += `${randomUnicodeChunk(1000)}${entropyNoise(100)}"\n"`;
+    text += `${randomUnicodeChunk(10)}${entropyNoise(10)}"\n"`;
   }
   return text;
 }
 
 // 🔥 Apply abuse to each question
 const stressed = questions.map((q) => {
-  return q + " " + buildPayload(100);
+  return q + " " + buildPayload(10);
 });
 
 // Write back to JSON
@@ -88,5 +88,3 @@ parsed.questions = stressed;
 fs.writeFileSync(fileDir, JSON.stringify(parsed, null, 2), "utf8");
 
 // Log file size
-const stats = fs.statSync(fileDir);
-

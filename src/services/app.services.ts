@@ -12,12 +12,11 @@ let services = {
     let questions: string[] = await response.data;
     return spam(username, questions );
   },
-  addservice: async (fileName: string, payload: string[]) => {
-    return add(fileName, payload);
+  addservice: async (filename: string, payload: string[]) => {
+    return add(filename, payload);
   },
-  cronService: async (username: string) => {
-  
-    return cron(username);
+  cronService: async (username: string,filename:string="questions") => {
+    return cron(username,filename);
   },
 };
 

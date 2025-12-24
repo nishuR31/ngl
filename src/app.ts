@@ -1,17 +1,33 @@
 import express from 'express';
 import router from './routes/app.routes.js';
-import path from 'path';
+import path from 'node:path';
 const app = express();
-let __dirname = path.resolve();
-// console.log(__dirname)
+import fs from "node:fs"
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // routes
 
 
-app.get('/api/questions',(req: Request, res: Response) => {
-  const filePath = path.join(__dirname, 'src/data/questions.json');
+app.get('/api/files',(req: Request, res: Response) => {
+  const dataDir = path.join(process.cwd(), "src", "data");
+  try {
+    const files = fs.readdirSync(dataDir).filter(f => f.endsWith(".json"));
+    res.json({ files });
+  } catch (e) {
+    res.status(500).json({ error: "Cannot read data folder" });
+  }
+
+});
+
+app.get("/api/file/:file", (req:Request, res:Response) => {
+  const safe = req.params.file.replace(/[^a-zA-Z0-9_-]/g, "");
+  const filePath = path.join(process.cwd(), "src", "data", `${safe}.json`);
+
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ error: "File not found" });
+  }
+
   res.sendFile(filePath);
 });
 
